@@ -1,83 +1,65 @@
-package test;
+package com.program75;
+
 //62.Program to Convert Binary Number to Octal and vice-versa
 import java.util.Scanner;
+
 public class BinaryNumbertoOctal {
 
-	   static void ocatlToBin(long oct) {
-		  String bin=new String();
-			int num=0;	  
-		  System.out.println("Your binary number : ");
-		while(oct>0) {
-				num=num*10;
-				int i=(int)(oct%10);
-				num=num+i;
-				oct=oct/10;
-		}
-		
-		while(num>0){
-			    int i=num%10;
-				int j=i%8;
-				switch(j) {
-				case 0: bin="000";
-				break;
-				case 1: bin="001";
-				break;
-				case 2: bin="010";
-				break;
-				case 3: bin="011";
-				break;
-				case 4: bin="100";
-				break;
-				case 5: bin="101";
-				break;
-				case 6: bin="110";
-				break;
-				case 7: bin="111";
-				break;
-				
-				}
-				num=num/10;
-				System.out.print(bin+" ");
-			}
-		System.out.println();
-		}
-          static void	binToOctal(long binary) {
-        	  int bin=0;
-        	  switch((int)binary){
-        	    case 000: bin+=0;
-				break;
-				case 001: bin+=1;
-				break;
-				case 010: bin+=2;
-				break;
-				case 011: bin+=3;
-				break;
-				case 100: bin+=4;
-				break;
-				case 101: bin+=5;
-				break;
-				case 110: bin+=6;
-				break;
-				case 111: bin+=7;
-				break;
-        	  }
-        	  System.out.print("Your octal number : "+bin);
-          }
-	  
-	
 	public static void main(String[] args) {
-			
-		//BinaryNumbertoOctal obj=new BinaryNumbertoOctal();
-		Scanner sc=new Scanner(System.in);
+
+		// BinaryNumbertoOctal obj=new BinaryNumbertoOctal();
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter  your octal number : ");
-		long octal=sc.nextLong();
+		int octal = sc.nextInt();
 		ocatlToBin(octal);
-		
+
 		System.out.println("Enetr your Binary number : ");
-		long binary=sc.nextLong();
+		long binary = sc.nextLong();
 		binToOctal(binary);
 		sc.close();
 
+	}
+
+	static void ocatlToBin(int oct) {
+		int num = 0;
+		System.out.println("Your binary number : ");
+		String binary = "";
+		while (oct > 0) {
+			num = oct % 10;
+			oct = oct / 10;
+			int j = num;
+			switch (j) {
+			case 0 -> binary = "000 " + binary;
+			case 1 -> binary = "001 " + binary;
+			case 2 -> binary = "010 " + binary;
+			case 3 -> binary = "011 " + binary;
+			case 4 -> binary = "100 " + binary;
+			case 5 -> binary = "101 " + binary;
+			case 6 -> binary = "110 " + binary;
+			case 7 -> binary = "111 " + binary;
+			}
+		}
+		System.out.println(binary);
+		System.out.println();
+	}
+
+	static void binToOctal(long binary) {
+		String oct = "";
+		while (binary > 0) {
+			long n = binary % 1000;
+			binary=binary/1000;
+			switch ((int) n) {
+			case 0 -> oct = 0 + oct;
+			case 1 -> oct = 1 + oct;
+			case 10 -> oct = 2 + oct;
+			case 11 -> oct = 3 + oct;
+			case 100 -> oct = 4 + oct;
+			case 101 -> oct = 5 + oct;
+			case 110 -> oct = 6 + oct;
+			case 111 -> oct = 7 + oct;
+			}
+		}
+		System.out.print("Your octal number : " + oct);
 	}
 
 }
